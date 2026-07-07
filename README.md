@@ -1,5 +1,6 @@
 
 # 🗼 Blog Paris - A Cidade Luz 🇫🇷
+##link do gitbub pages; https://mariaquintilianoamaral-ai.github.io/paris/
 
 ![Paris](https://images.unsplash.com/photo-1502602898657-3e91760cbb34)
 
