@@ -1,56 +1,39 @@
-// CURTIDAS
 
+const botao = document.getElementById("botaoGerador");
+const lampada = document.getElementById("lampadaInferior");
+const experimento = document.querySelector(".experimento");
+const estado = document.getElementById("estado");
+const textoBotao = document.getElementById("textoBotao");
+const iconeBotao = document.getElementById("iconeBotao");
 
-const botaoCurtir = document.querySelector("#curtir");
+let ligado = false;
 
-const contador = document.querySelector("#curtir span");
+botao.addEventListener("click", () => {
+  ligado = !ligado;
 
+  lampada.classList.toggle("on", ligado);
+  experimento.classList.toggle("ativo", ligado);
 
-let curtidas = 0;
+  if (ligado) {
+    textoBotao.textContent = "Desligar demonstração";
+    iconeBotao.textContent = "■";
 
+    estado.textContent =
+      "Demonstração ativada! O LED está aceso e a bobina está animada.";
 
-botaoCurtir.addEventListener("click",()=>{
+    botao.setAttribute("aria-pressed", "true");
+  } else {
+    textoBotao.textContent = "Ativar demonstração";
+    iconeBotao.textContent = "▶";
 
+    estado.textContent =
+      "Sistema desligado. Ative a demonstração para visualizar o LED.";
 
-curtidas++;
-
-contador.textContent = curtidas;
-
-
+    botao.setAttribute("aria-pressed", "false");
+  }
 });
 
-
-
-
-
-// MODO ESCURO
-
-
-const botaoTema = document.querySelector("#modoEscuro");
-
-
-botaoTema.addEventListener("click",()=>{
-
-
-document.body.classList.toggle("dark-mode");
-
-
-
-if(document.body.classList.contains("dark-mode")){
-
-
-botaoTema.innerHTML="☀️ Modo Claro";
-
-
-}
-
-else{
-
-
-botaoTema.innerHTML="🌙 Modo Escuro";
-
-
-}
-
-
-});
+// Inicia com o LED desligado.
+lampada.classList.remove("on");
+experimento.classList.remove("ativo");
+botao.setAttribute("aria-pressed", "false");

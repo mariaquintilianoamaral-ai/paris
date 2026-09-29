@@ -1,347 +1,931 @@
-*{
 
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-
+/* CONFIGURAÇÕES GERAIS */
+:root {
+  --verde-escuro: #173c2a;
+  --verde: #2f7044;
+  --grama: #65a653;
+  --terra: #b98251;
+  --madeira: #8a5938;
+  --creme: #fff9eb;
+  --azul: #299bd1;
+  --amarelo: #ffd84d;
+  --painel: #e4d0b1;
 }
 
-
-body{
-
-background:#f5efe6;
-
-color:#333;
-
-transition:.4s;
-
+* {
+  box-sizing: border-box;
 }
 
-
-
-header{
-
-background:linear-gradient(135deg,#002654,#ed2939);
-
-color:white;
-
-text-align:center;
-
-padding:60px 20px;
-
+body {
+  margin: 0;
+  background: #f2f0e8;
+  color: #25352b;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
 }
 
-
-header h1{
-
-font-size:45px;
-
+.cabecalho {
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #173c2a, #327448);
 }
 
-
-
-header p{
-
-font-size:20px;
-
+.cabecalho h1 {
+  margin: 5px 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
-
-
-main{
-
-width:90%;
-
-max-width:1100px;
-
-margin:40px auto;
-
+.cabecalho p {
+  margin: 5px 0;
 }
 
-
-
-.noticia-principal{
-
-background:white;
-
-padding:40px;
-
-border-radius:25px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-margin-bottom:50px;
-
+.etiqueta {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
 }
 
-
-
-.imagem-principal{
-
-width:75%;
-
-height:380px;
-
-display:block;
-
-margin:auto;
-
-object-fit:cover;
-
-border-radius:20px;
-
+.pagina {
+  width: min(1100px, 94%);
+  margin: 30px auto;
 }
 
-
-
-.noticia-principal h2{
-
-color:#002654;
-
-font-size:35px;
-
-margin:30px 0 15px;
-
+.introducao,
+.plataforma,
+.explicacao {
+  margin-bottom: 28px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #deded4;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px #233b2510;
 }
 
-
-
-p{
-
-font-size:18px;
-
-line-height:1.8;
-
-margin-bottom:20px;
-
+h2, h3, p {
+  overflow-wrap: break-word;
 }
 
-
-
-.artigo-autor{
-
-font-weight:bold;
-
-color:#555;
-
-font-size:16px;
-
+.titulo-plataforma {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
-
-
-.artigo-fonte{
-
-font-size:14px;
-
-font-style:italic;
-
-color:#777;
-
-border-top:1px solid #ddd;
-
-padding-top:15px;
-
-margin-top:20px;
-
+.titulo-plataforma > span,
+.passo > span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  color: white;
+  background: var(--verde);
+  border-radius: 50%;
+  font-weight: bold;
 }
 
-
-
-.bolhas{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-gap:30px;
-
+.titulo-plataforma h2,
+.titulo-plataforma p {
+  margin: 0;
 }
 
-
-
-.bolha{
-
-background:white;
-
-padding:30px;
-
-border-radius:35px;
-
-box-shadow:0 8px 20px rgba(0,0,0,.15);
-
-transition:.3s;
-
+.titulo-plataforma p {
+  color: #68776b;
+  font-size: 0.9rem;
 }
 
-
-
-.bolha:hover{
-
-transform:translateY(-8px);
-
+/* PLATAFORMA SUPERIOR */
+.fazenda {
+  position: relative;
+  isolation: isolate;
+  height: 480px;
+  overflow: hidden;
+  border: 8px solid #a16b42;
+  border-radius: 8px;
+  background: #77b8df;
+  box-shadow: 0 8px 0 #70482d;
 }
 
-
-
-.bolha h3{
-
-color:#002654;
-
-margin-bottom:15px;
-
+.ceu {
+  position: absolute;
+  inset: 0 0 38% 0;
+  z-index: -1;
+  background: linear-gradient(#bce6f7, #e7f4df);
 }
 
-
-
-#modoEscuro{
-
-position:fixed;
-
-left:30px;
-
-bottom:30px;
-
-background:#002654;
-
-color:white;
-
-border:none;
-
-padding:15px 20px;
-
-border-radius:30px;
-
-cursor:pointer;
-
+.sol {
+  position: absolute;
+  top: 25px;
+  right: 10%;
+  width: 48px;
+  height: 48px;
+  background: #ffda65;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #ffe5a6;
 }
 
-
-
-#curtir{
-
-position:fixed;
-
-right:30px;
-
-bottom:30px;
-
-background:#ed2939;
-
-color:white;
-
-border:none;
-
-padding:15px 25px;
-
-border-radius:30px;
-
-cursor:pointer;
-
-font-size:20px;
-
+.nuvem {
+  position: absolute;
+  width: 65px;
+  height: 20px;
+  background: white;
+  border-radius: 30px;
+  opacity: 0.8;
 }
 
-
-
-footer{
-
-background:#002654;
-
-color:white;
-
-text-align:center;
-
-padding:25px;
-
-margin-top:50px;
-
+.nuvem::before,
+.nuvem::after {
+  position: absolute;
+  content: "";
+  background: inherit;
+  border-radius: 50%;
 }
 
-
-
-/* DARK MODE */
-
-
-body.dark-mode{
-
-background:#121212;
-
-color:white;
-
+.nuvem::before {
+  width: 27px;
+  height: 27px;
+  top: -12px;
+  left: 12px;
 }
 
-
-
-body.dark-mode .noticia-principal,
-body.dark-mode .bolha{
-
-background:#1f1f1f;
-
+.nuvem::after {
+  width: 35px;
+  height: 35px;
+  top: -17px;
+  right: 8px;
 }
 
-
-
-body.dark-mode h2,
-body.dark-mode h3{
-
-color:#66b3ff;
-
+.nuvem-1 {
+  top: 55px;
+  left: 12%;
 }
 
-
-
-body.dark-mode p{
-
-color:#eee;
-
+.nuvem-2 {
+  top: 105px;
+  right: 34%;
+  transform: scale(0.75);
 }
 
-
-
-body.dark-mode .artigo-autor,
-body.dark-mode .artigo-fonte{
-
-color:#bbb;
-
+.fazenda::before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  top: 40%;
+  left: -5%;
+  width: 110%;
+  height: 72%;
+  background: #65a653;
+  border-radius: 48% 48% 0 0;
 }
 
-
-
-body.dark-mode header{
-
-background:#111;
-
+/* CASA CENTRAL */
+.casa {
+  position: absolute;
+  z-index: 4;
+  top: 31%;
+  left: 50%;
+  width: 220px;
+  transform: translateX(-50%);
 }
 
-
-
-body.dark-mode footer{
-
-background:#000;
-
+.telhado-casa {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 90px;
+  background: #885332;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  filter: drop-shadow(0 3px 1px #5a3827);
 }
 
-
-
-@media(max-width:700px){
-
-
-.imagem-principal{
-
-width:100%;
-
-height:250px;
-
+.corpo-casa {
+  position: relative;
+  height: 155px;
+  margin-top: -2px;
+  border: 3px solid #d4b993;
+  background: #fff7e7;
 }
 
-
-header h1{
-
-font-size:30px;
-
+.porta-casa {
+  position: absolute;
+  bottom: 0;
+  left: 23px;
+  width: 47px;
+  height: 87px;
+  background: #956440;
+  border: 3px solid #6e472e;
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0;
 }
 
+.porta-casa::after {
+  position: absolute;
+  top: 42px;
+  right: 5px;
+  width: 5px;
+  height: 5px;
+  content: "";
+  background: #f7d780;
+  border-radius: 50%;
+}
 
+.janela-casa {
+  position: absolute;
+  top: 22px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 65px;
+  border: 5px solid #a66e3d;
+  background:
+    linear-gradient(90deg, transparent 46%, #a66e3d 46%, #a66e3d 54%, transparent 54%),
+    linear-gradient(transparent 46%, #a66e3d 46%, #a66e3d 54%, transparent 54%),
+    #ffdc69;
+}
+
+.luz-casa {
+  width: 18px;
+  height: 18px;
+  background: #fff5a6;
+  border-radius: 50%;
+  box-shadow: 0 0 16px 8px #ffdc69;
+  animation: brilho 2s infinite alternate;
+}
+
+.legenda-item {
+  display: block;
+  margin-top: 5px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 2px 3px #25352b;
+}
+
+/* CELEIRO À DIREITA DA CASA */
+.celeiro {
+  position: absolute;
+  z-index: 3;
+  top: 29%;
+  right: 5%;
+  width: 145px;
+}
+
+.telhado-celeiro {
+  width: 100%;
+  height: 65px;
+  background: #70442d;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.corpo-celeiro {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 118px;
+  margin-top: -1px;
+  background: #b83e34;
+  border: 4px solid #813028;
+}
+
+.porta-celeiro {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 75px;
+  color: #f8e8d3;
+  background: #9f302b;
+  border: 4px solid #f1d9bb;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* LAGO À ESQUERDA */
+.lago-container {
+  position: absolute;
+  z-index: 2;
+  top: 51%;
+  left: 3%;
+  width: 24%;
+}
+
+.lago {
+  position: relative;
+  height: 85px;
+  overflow: hidden;
+  border: 8px solid #9d8b70;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #64c8ef, #1676b2);
+  box-shadow: inset 0 0 15px #075889;
+}
+
+.brilho-agua {
+  position: absolute;
+  top: 22px;
+  left: 20%;
+  width: 55%;
+  height: 5px;
+  background: #b9f2ff;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.lago::after {
+  position: absolute;
+  right: 15%;
+  bottom: 17px;
+  width: 35%;
+  height: 4px;
+  content: "";
+  background: #a9e9fb;
+  border-radius: 50%;
+}
+
+/* PLANTAÇÃO À DIREITA */
+.plantacao-container {
+  position: absolute;
+  z-index: 2;
+  right: 2%;
+  bottom: 20%;
+  width: 23%;
+}
+
+.plantacao {
+  display: grid;
+  gap: 7px;
+  padding: 10px 5px;
+  background: #76502f;
+  border: 4px solid #d4b184;
+  transform: perspective(180px) rotateX(5deg);
+}
+
+.fileira {
+  display: flex;
+  justify-content: space-around;
+  color: #a6eb76;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  line-height: 1;
+}
+
+.fileira span {
+  text-shadow: 1px 2px 1px #285a2d;
+}
+
+/* ÁRVORE */
+.arvore {
+  position: absolute;
+  z-index: 2;
+  top: 28%;
+  right: 30%;
+  width: 70px;
+  height: 125px;
+}
+
+.tronco {
+  position: absolute;
+  bottom: 0;
+  left: 28px;
+  width: 18px;
+  height: 65px;
+  background: #805332;
+}
+
+.copa {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 78px;
+  background: #347a3d;
+  border: 5px solid #286333;
+  border-radius: 45% 50% 43% 50%;
+  box-shadow: inset -8px -5px #2c6c36;
+}
+
+/* CAMINHO E CERCAS */
+.caminho {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 45%;
+  width: 90px;
+  height: 37%;
+  background: #bc9567;
+  clip-path: polygon(32% 0, 68% 0, 100% 100%, 0 100%);
+}
+
+.cerca {
+  position: absolute;
+  z-index: 5;
+  height: 8px;
+  background: #dfbd85;
+  border-top: 2px solid #a4774b;
+  border-bottom: 2px solid #a4774b;
+}
+
+.cerca::before,
+.cerca::after {
+  position: absolute;
+  top: -17px;
+  width: 9px;
+  height: 34px;
+  content: "";
+  background: #d9b57e;
+  border-radius: 3px;
+}
+
+.cerca::before {
+  left: 12%;
+}
+
+.cerca::after {
+  right: 12%;
+}
+
+.cerca-frente {
+  bottom: 12%;
+  left: 5%;
+  width: 30%;
+}
+
+.cerca-lateral {
+  right: 27%;
+  bottom: 13%;
+  width: 19%;
+}
+
+.chao {
+  position: absolute;
+  z-index: 6;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 22px;
+  color: white;
+  background: #3e773d;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+}
+
+.legenda {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+.legenda > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ponto {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.amarelo { background: #ffcf4a; }
+.azul { background: #299bd1; }
+.verde { background: #65a653; }
+
+/* PLATAFORMA INFERIOR */
+.experimento {
+  padding: 24px 16px;
+  overflow: hidden;
+  text-align: center;
+  background: linear-gradient(#d4b58b, #a97c4d);
+  border: 7px solid #795332;
+  border-radius: 7px;
+  box-shadow: inset 0 0 20px #76533255;
+}
+
+.identificacao {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+  color: #4b3421;
+  font-size: clamp(0.55rem, 1.5vw, 0.78rem);
+  font-weight: bold;
+}
+
+.mecanismo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 2vw, 20px);
+  margin-top: 30px;
+}
+
+.par-imas {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+.ima {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90px;
+  min-width: 0;
+  height: 105px;
+  color: white;
+  border: 3px solid #f0d7a8;
+  box-shadow: inset 0 0 10px #0003;
+}
+
+.ima strong {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+}
+
+.ima small {
+  font-size: 0.65rem;
+}
+
+.ima-n {
+  background: linear-gradient(135deg, #f0524a, #a91e29);
+}
+
+.ima-s {
+  background: linear-gradient(135deg, #4b9ee5, #174e99);
+}
+
+.gerador {
+  position: relative;
+  display: flex;
+  flex: 0 1 140px;
+  flex-direction: column;
+  align-items: center;
+  min-width: 75px;
+}
+
+.eixo {
+  position: absolute;
+  top: 38px;
+  width: 150%;
+  height: 8px;
+  background: linear-gradient(#d9d9d9, #6e6e6e, #ececec);
+  border-radius: 5px;
+}
+
+.bobina {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  max-width: 120px;
+  height: 85px;
+  padding: 7px 5px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #70401d, #d58a35, #79431e);
+  border: 5px solid #714321;
+  border-radius: 9px;
+  box-shadow: 0 4px 7px #39210f55;
+}
+
+.bobina span {
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(90deg, #9e4d14, #ffc15b, #a95c1c);
+  border-radius: 2px;
+}
+
+.legenda-bobina {
+  margin-top: 7px;
+  color: #39291c;
+  font-size: 0.72rem;
+  font-weight: bold;
+}
+
+.circuito {
+  position: relative;
+  width: min(360px, 90%);
+  height: 115px;
+  margin: 0 auto;
+}
+
+.fio {
+  position: absolute;
+  top: 8px;
+  width: 50%;
+  height: 62px;
+  border-bottom: 5px solid;
+}
+
+.fio-vermelho {
+  left: 0;
+  border-color: #b52d29;
+  border-left: 4px solid #b52d29;
+  border-radius: 0 0 0 45px;
+}
+
+.fio-preto {
+  right: 0;
+  border-color: #292929;
+  border-right: 4px solid #292929;
+  border-radius: 0 0 45px 0;
+}
+
+.lampada-inferior {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.bulbo {
+  width: 34px;
+  height: 43px;
+  background: #9b9990;
+  border: 3px solid #6f6d64;
+  border-radius: 50% 50% 40% 40%;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.base-lampada {
+  width: 20px;
+  height: 15px;
+  background: #67635b;
+  border-radius: 3px;
+}
+
+.lampada-inferior.on .bulbo {
+  background: #fff3a0;
+  border-color: #fff8d1;
+  box-shadow: 0 0 12px 5px #ffdf60, 0 0 35px 12px #ffcb42aa;
+}
+
+.estado {
+  min-height: 48px;
+  margin: 10px auto;
+  color: #3e2b1c;
+  font-size: 0.9rem;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  color: white;
+  background: #225d36;
+  border: 0;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.botao:hover {
+  background: #174426;
+  transform: translateY(-2px);
+}
+
+.botao:focus-visible {
+  outline: 3px solid #ffdc69;
+  outline-offset: 4px;
+}
+
+/* ANIMAÇÃO ILUSTRATIVA */
+.experimento.ativo .bobina {
+  animation: pulsar 0.8s infinite alternate;
+}
+
+.experimento.ativo .eixo {
+  animation: vibrar 0.25s infinite alternate;
+}
+
+/* EXPLICAÇÃO */
+.passos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.passo {
+  padding: 18px;
+  background: #f2f7ef;
+  border: 1px solid #dce9d8;
+  border-radius: 12px;
+}
+
+.passo h3 {
+  margin-bottom: 5px;
+}
+
+.passo p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.aviso {
+  margin-top: 22px;
+  padding: 15px;
+  background: #fff5d9;
+  border-left: 4px solid #dca83e;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+footer {
+  padding: 20px;
+  color: white;
+  background: var(--verde-escuro);
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ANIMAÇÕES */
+@keyframes brilho {
+  from { opacity: 0.75; }
+  to { opacity: 1; }
+}
+
+@keyframes pulsar {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.4); }
+}
+
+@keyframes vibrar {
+  from { transform: translateX(-2px); }
+  to { transform: translateX(2px); }
+}
+
+/* TELAS PEQUENAS */
+@media (max-width: 650px) {
+  .pagina {
+    width: 96%;
+    margin: 15px auto;
+  }
+
+  .introducao,
+  .plataforma,
+  .explicacao {
+    padding: 15px 10px;
+  }
+
+  .fazenda {
+    height: 390px;
+    border-width: 5px;
+  }
+
+  .casa {
+    top: 34%;
+    width: 145px;
+  }
+
+  .telhado-casa {
+    height: 60px;
+  }
+
+  .corpo-casa {
+    height: 112px;
+  }
+
+  .porta-casa {
+    left: 12px;
+    width: 34px;
+    height: 65px;
+  }
+
+  .janela-casa {
+    top: 18px;
+    right: 9px;
+    width: 48px;
+    height: 48px;
+    border-width: 3px;
+  }
+
+  .celeiro {
+    top: 28%;
+    right: 2%;
+    width: 95px;
+  }
+
+  .telhado-celeiro {
+    height: 42px;
+  }
+
+  .corpo-celeiro {
+    height: 75px;
+    border-width: 3px;
+  }
+
+  .porta-celeiro {
+    width: 38px;
+    height: 49px;
+    font-size: 1.3rem;
+  }
+
+  .lago-container {
+    top: 57%;
+    left: 1%;
+    width: 25%;
+  }
+
+  .lago {
+    height: 56px;
+    border-width: 5px;
+  }
+
+  .plantacao-container {
+    right: 1%;
+    bottom: 19%;
+    width: 24%;
+  }
+
+  .plantacao {
+    gap: 4px;
+    padding: 5px 2px;
+    border-width: 2px;
+  }
+
+  .fileira {
+    font-size: 1.1rem;
+  }
+
+  .arvore {
+    top: 27%;
+    right: 29%;
+    transform: scale(0.7);
+    transform-origin: top right;
+  }
+
+  .cerca-lateral {
+    right: 25%;
+    width: 20%;
+  }
+
+  .passos {
+    grid-template-columns: 1fr;
+  }
+
+  .experimento {
+    padding: 18px 7px;
+  }
+
+  .mecanismo {
+    gap: 3px;
+  }
+
+  .ima {
+    height: 78px;
+    border-width: 2px;
+  }
+
+  .ima small {
+    font-size: 0.5rem;
+  }
+
+  .gerador {
+    flex-basis: 95px;
+    min-width: 60px;
+  }
+
+  .bobina {
+    height: 65px;
+    padding: 5px 3px;
+    gap: 1px;
+  }
+
+  .bobina span {
+    width: 3px;
+  }
+
+  .eixo {
+    top: 28px;
+  }
+
+  .identificacao {
+    font-size: 0.52rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
